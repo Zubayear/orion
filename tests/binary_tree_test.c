@@ -23,14 +23,26 @@ void test_traversal() {
   root = insert_node(root, 5);
   root = insert_node(root, 15);
 
+  printf("inorder traversal\n");
   inorder_traversal(root);
-  printf("\n");
+}
+
+void test_bfs() {
+
+  TreeNode *root = NULL;
+  root = insert_node(root, 10);
+  root = insert_node(root, 5);
+  root = insert_node(root, 15);
+
+  printf("bfs\n");
+  bfs(root);
 }
 
 int main() {
 
   test_insert();
   test_traversal();
+  test_bfs();
 
   return 0;
 }

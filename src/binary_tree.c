@@ -1,4 +1,5 @@
 #include "../include/binary_tree.h"
+#include "../include/deque.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -41,4 +42,24 @@ void free_tree(TreeNode *root) {
   free_tree(root->left);
   free_tree(root->right);
   free(root);
+}
+
+void bfs(TreeNode *root) {
+  if (root == NULL) {
+    return;
+  }
+
+  Deque *queue = create_deque();
+  push_front(queue, root);
+
+  while (!is_empty(queue)) {
+    TreeNode *node = (TreeNode *)pop_back(queue);
+    printf("%d ", node->data);
+    if (node->left != NULL) {
+      push_front(queue, node->left);
+    }
+    if (node->right != NULL) {
+      push_front(queue, node->right);
+    }
+  }
 }

@@ -15,7 +15,7 @@ int is_empty(Deque *deque) { return deque->size == 0; }
 
 size_t get_size(Deque *deque) { return deque->size; }
 
-void push_front(Deque *deque, const int data) {
+void push_front(Deque *deque, void *data) {
   DequeNode *node = malloc(sizeof(DequeNode));
   if (node == NULL) {
     return;
@@ -35,7 +35,7 @@ void push_front(Deque *deque, const int data) {
   deque->size++;
 }
 
-void push_back(Deque *deque, const int data) {
+void push_back(Deque *deque, void *data) {
   DequeNode *node = malloc(sizeof(DequeNode));
   if (node == NULL) {
     return;
@@ -54,12 +54,12 @@ void push_back(Deque *deque, const int data) {
   deque->size++;
 }
 
-int pop_front(Deque *deque) {
+void *pop_front(Deque *deque) {
   if (deque == NULL || deque->front == NULL) {
     return 0;
   }
   DequeNode *temp = deque->front;
-  int data = temp->data;
+  void *data = temp->data;
   deque->front = deque->front->next;
 
   if (deque->front == NULL) {
@@ -72,13 +72,14 @@ int pop_front(Deque *deque) {
   return data;
 }
 
-int pop_back(Deque *deque) {
+void *pop_back(Deque *deque) {
   if (deque == NULL || deque->rear == NULL) {
     return 0;
   }
   DequeNode *temp = deque->rear;
   deque->rear = deque->rear->prev;
 
+  void *data = temp->data;
   if (deque->rear == NULL) {
     deque->front = NULL;
   } else {
@@ -86,7 +87,7 @@ int pop_back(Deque *deque) {
   }
   free(temp);
   deque->size--;
-  return 1;
+  return data;
 }
 
 DequeNode *front(Deque *deque) {
