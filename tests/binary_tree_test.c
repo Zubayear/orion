@@ -23,8 +23,9 @@ void test_traversal() {
   root = insert_node(root, 5);
   root = insert_node(root, 15);
 
-  printf("inorder traversal\n");
+  printf("\ninorder traversal\n");
   inorder_traversal(root);
+  printf("\n");
 }
 
 void test_bfs() {
@@ -34,8 +35,9 @@ void test_bfs() {
   root = insert_node(root, 5);
   root = insert_node(root, 15);
 
-  printf("bfs\n");
+  printf("\nbfs\n");
   bfs(root);
+  printf("\n");
 }
 
 int main() {

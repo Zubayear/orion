@@ -15,14 +15,32 @@ TreeNode *create_new_node(const int data) {
 }
 
 TreeNode *insert_node(TreeNode *root, const int data) {
+  TreeNode *node = create_new_node(data);
   if (root == NULL) {
-    return create_new_node(data);
+    return node;
   }
-  if (root->data > data) {
-    root->left = insert_node(root->left, data);
-  } else {
-    root->right = insert_node(root->right, data);
+
+  Deque *queue = create_deque();
+  push_front(queue, root);
+
+  while (!is_empty(queue)) {
+    TreeNode *current = pop_back(queue);
+    if (current->left == NULL) {
+      current->left = node;
+      break;
+    } else {
+      push_front(queue, current->left);
+    }
+
+    if (current->right == NULL) {
+      current->right = node;
+      break;
+    } else {
+      push_front(queue, current->right);
+    }
   }
+
+  clear_deque(queue);
   return root;
 }
 
