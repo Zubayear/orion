@@ -13,7 +13,7 @@ Deque *create_deque() {
 
 int is_empty(Deque *deque) { return deque->size == 0; }
 
-size_t get_size(Deque *deque) { return deque->size; }
+int get_size(Deque *deque) { return deque->size; }
 
 void push_front(Deque *deque, void *data) {
   DequeNode *node = malloc(sizeof(DequeNode));
