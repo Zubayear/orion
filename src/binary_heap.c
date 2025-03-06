@@ -2,15 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-BinaryHeap *create_heap(const int capacity) {
-  BinaryHeap *heap = (BinaryHeap *)malloc(sizeof(BinaryHeap));
+binary_heap_t *create_heap(const int capacity) {
+  binary_heap_t *heap = (binary_heap_t *)malloc(sizeof(binary_heap_t));
   heap->arr = (int *)malloc(capacity * sizeof(int));
   heap->size = 0;
   heap->capacity = capacity;
   return heap;
 }
 
-void push(BinaryHeap *heap, int value) {
+void push(binary_heap_t *heap, int value) {
   if (heap->size == heap->capacity) {
     return;
   }
@@ -26,7 +26,7 @@ void swap(int *a, int *b) {
   *b = t;
 }
 
-void heapify_up(BinaryHeap *heap, int index) {
+void heapify_up(binary_heap_t *heap, int index) {
   int parent = (index - 1) / 2;
   while (index > 0 && heap->arr[parent] < heap->arr[index]) {
     swap(&heap->arr[parent], &heap->arr[index]);
@@ -35,7 +35,7 @@ void heapify_up(BinaryHeap *heap, int index) {
   }
 }
 
-void heapify_down(BinaryHeap *heap, int index) {
+void heapify_down(binary_heap_t *heap, int index) {
   int left_child = 2 * index + 1;
   int right_child = 2 * index + 2;
   int largest = index;
@@ -56,7 +56,7 @@ void heapify_down(BinaryHeap *heap, int index) {
   }
 }
 
-int pop(BinaryHeap *heap) {
+int pop(binary_heap_t *heap) {
   if (heap->size == 0) {
     return -1;
   }
@@ -67,19 +67,19 @@ int pop(BinaryHeap *heap) {
   return root;
 }
 
-int peek(BinaryHeap *heap) {
+int peek(binary_heap_t *heap) {
   if (heap->size == 0) {
     return -1;
   }
   return heap->arr[0];
 }
 
-void destroy_heap(BinaryHeap *heap) {
+void destroy_heap(binary_heap_t *heap) {
   free(heap->arr);
   free(heap);
 }
 
-void print_heap(BinaryHeap *heap) {
+void print_heap(binary_heap_t *heap) {
   printf("Heap: ");
   for (int i = 0; i < heap->size; ++i) {
     printf("%d ", heap->arr[i]);
@@ -87,7 +87,7 @@ void print_heap(BinaryHeap *heap) {
   printf("\n");
 }
 
-void heap_sort(BinaryHeap *heap) {
+void heap_sort(binary_heap_t *heap) {
   int size = heap->size;
   for (int i = 0; i < size; ++i) {
     printf("%d ", pop(heap));

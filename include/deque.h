@@ -4,23 +4,23 @@
 typedef struct DequeNode {
   void *data;
   struct DequeNode *prev, *next;
-} DequeNode;
+} deque_node_t;
 
-typedef struct Deque {
-  struct DequeNode *front, *rear;
+typedef struct deque_t {
+  deque_node_t *front, *rear;
   int size;
-} Deque;
+} deque_t;
 
-Deque *create_deque();
-int is_empty(Deque *deque);
-int get_size(Deque *deque);
-void push_front(Deque *deque, void *data);
-void push_back(Deque *deque, void *data);
-void *pop_front(Deque *deque);
-void *pop_back(Deque *deque);
-DequeNode *front(Deque *deque);
-DequeNode *back(Deque *deque);
-void clear_deque(Deque *deque);
-void destroy_deque(Deque *deque);
+deque_t *create_deque();
+int is_empty(deque_t *deque);
+int get_size(deque_t *deque);
+void push_front(deque_t *deque, void *data);
+void push_back(deque_t *deque, void *data);
+void *pop_front(deque_t *deque);
+void *pop_back(deque_t *deque);
+deque_node_t *front(deque_t *deque);
+deque_node_t *back(deque_t *deque);
+void clear_deque(deque_t *deque);
+void destroy_deque(deque_t *deque);
 
 #endif

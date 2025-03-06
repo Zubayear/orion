@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 void test_create_deque() {
-  Deque *deque = create_deque();
+  deque_t *deque = create_deque();
   assert(deque != NULL);
   assert(is_empty(deque) == 1);
   assert(get_size(deque) == 0);
@@ -13,7 +13,7 @@ void test_create_deque() {
 }
 
 void test_push_front() {
-  Deque *deque = create_deque();
+  deque_t *deque = create_deque();
   int *val1 = malloc(sizeof(int));
   int *val2 = malloc(sizeof(int));
   *val1 = 10;
@@ -34,7 +34,7 @@ void test_push_front() {
 }
 
 void test_push_back() {
-  Deque *deque = create_deque();
+  deque_t *deque = create_deque();
   int *val1 = malloc(sizeof(int));
   int *val2 = malloc(sizeof(int));
   *val1 = 5;
@@ -55,7 +55,7 @@ void test_push_back() {
 }
 
 void test_pop_front() {
-  Deque *deque = create_deque();
+  deque_t *deque = create_deque();
   int *val1 = malloc(sizeof(int));
   int *val2 = malloc(sizeof(int));
   *val1 = 1;
@@ -77,7 +77,7 @@ void test_pop_front() {
 }
 
 void test_pop_back() {
-  Deque *deque = create_deque();
+  deque_t *deque = create_deque();
   int *val1 = malloc(sizeof(int));
   int *val2 = malloc(sizeof(int));
   *val1 = 100;
@@ -99,7 +99,7 @@ void test_pop_back() {
 }
 
 void test_front_back() {
-  Deque *deque = create_deque();
+  deque_t *deque = create_deque();
   int *val1 = malloc(sizeof(int));
   int *val2 = malloc(sizeof(int));
   *val1 = 42;
@@ -118,7 +118,7 @@ void test_front_back() {
 }
 
 void test_clear_deque() {
-  Deque *deque = create_deque();
+  deque_t *deque = create_deque();
   int *val1 = malloc(sizeof(int));
   int *val2 = malloc(sizeof(int));
   *val1 = 1;
@@ -137,7 +137,7 @@ void test_clear_deque() {
 }
 
 void test_destroy_deque() {
-  Deque *deque = create_deque();
+  deque_t *deque = create_deque();
   int *val1 = malloc(sizeof(int));
   *val1 = 10;
   push_front(deque, val1);
@@ -155,6 +155,6 @@ int main() {
   test_clear_deque();
   test_destroy_deque();
 
-  printf("\nAll Deque tests PASSED successfully!\n");
+  printf("\nAll deque_t tests PASSED successfully!\n");
   return 0;
 }

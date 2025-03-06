@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 void test_create_heap() {
-  BinaryHeap *heap = create_heap(5);
+  binary_heap_t *heap = create_heap(5);
   assert(heap != NULL);
   assert(heap->size == 0);
   assert(heap->capacity == 5);
@@ -12,7 +12,7 @@ void test_create_heap() {
 }
 
 void test_push() {
-  BinaryHeap *heap = create_heap(10);
+  binary_heap_t *heap = create_heap(10);
   push(heap, 10);
   push(heap, 5);
   push(heap, 15);
@@ -26,7 +26,7 @@ void test_push() {
 }
 
 void test_pop() {
-  BinaryHeap *heap = create_heap(10);
+  binary_heap_t *heap = create_heap(10);
   push(heap, 10);
   push(heap, 5);
   push(heap, 15);
@@ -47,7 +47,7 @@ void test_pop() {
 }
 
 void test_peek() {
-  BinaryHeap *heap = create_heap(10);
+  binary_heap_t *heap = create_heap(10);
   push(heap, 8);
   push(heap, 3);
   push(heap, 7);
@@ -59,7 +59,7 @@ void test_peek() {
 }
 
 void test_destroy_heap() {
-  BinaryHeap *heap = create_heap(5);
+  binary_heap_t *heap = create_heap(5);
   push(heap, 10);
   push(heap, 20);
 
@@ -69,7 +69,7 @@ void test_destroy_heap() {
 }
 
 void test_heap_sort() {
-  BinaryHeap *heap = create_heap(5);
+  binary_heap_t *heap = create_heap(5);
   push(heap, 10);
   push(heap, 20);
   push(heap, 5);
@@ -89,6 +89,6 @@ int main() {
   test_destroy_heap();
   test_heap_sort();
 
-  printf("\nAll BinaryHeap tests PASSED successfully!\n");
+  printf("\nAll binary_heap_t tests PASSED successfully!\n");
   return 0;
 }

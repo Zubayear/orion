@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-ListNode *create_node(const int data) {
-  ListNode *node = malloc(sizeof(ListNode));
+list_node_t *create_node(const int data) {
+  list_node_t *node = malloc(sizeof(list_node_t));
   if (!node) {
     return NULL;
   }
@@ -12,9 +12,9 @@ ListNode *create_node(const int data) {
   return node;
 }
 
-void destroy_list(ListNode **head) {
-  ListNode *current = *head;
-  ListNode *next_node;
+void destroy_list(list_node_t **head) {
+  list_node_t *current = *head;
+  list_node_t *next_node;
   while (current != NULL) {
     next_node = current->next;
     free(current);
@@ -23,8 +23,8 @@ void destroy_list(ListNode **head) {
   *head = NULL;
 }
 
-void insert_at_beginning(ListNode **head, const int data) {
-  ListNode *node = create_node(data);
+void insert_at_beginning(list_node_t **head, const int data) {
+  list_node_t *node = create_node(data);
   if (node == NULL) {
     return;
   }
@@ -32,8 +32,8 @@ void insert_at_beginning(ListNode **head, const int data) {
   *head = node;
 }
 
-void insert_at_end(ListNode **head, const int data) {
-  ListNode *node = create_node(data);
+void insert_at_end(list_node_t **head, const int data) {
+  list_node_t *node = create_node(data);
   if (node == NULL) {
     return;
   }
@@ -43,7 +43,7 @@ void insert_at_end(ListNode **head, const int data) {
     return;
   }
 
-  ListNode *current = *head;
+  list_node_t *current = *head;
 
   while (current->next != NULL) {
     current = current->next;
@@ -51,15 +51,16 @@ void insert_at_end(ListNode **head, const int data) {
   current->next = node;
 }
 
-void insert_at_position(ListNode **head, const int data, const int position) {
+void insert_at_position(list_node_t **head, const int data,
+                        const int position) {
   if (position == 0) {
     insert_at_beginning(head, data);
     return;
   }
 
   int k = 0;
-  ListNode *traveler = *head;
-  ListNode *node = create_node(data);
+  list_node_t *traveler = *head;
+  list_node_t *node = create_node(data);
 
   if (node == NULL) {
     return;
@@ -78,16 +79,16 @@ void insert_at_position(ListNode **head, const int data, const int position) {
   traveler->next = node;
 }
 
-void delete_at_beginning(ListNode **head) {
+void delete_at_beginning(list_node_t **head) {
   if (*head == NULL) {
     return;
   }
-  ListNode *temp = *head;
+  list_node_t *temp = *head;
   *head = (*head)->next;
   free(temp);
 }
 
-void delete_at_end(ListNode **head) {
+void delete_at_end(list_node_t **head) {
   if (*head == NULL) {
     return;
   }
@@ -98,8 +99,8 @@ void delete_at_end(ListNode **head) {
     return;
   }
 
-  ListNode *traveler = *head;
-  ListNode *prev = NULL;
+  list_node_t *traveler = *head;
+  list_node_t *prev = NULL;
 
   while (traveler->next != NULL) {
     prev = traveler;
@@ -110,7 +111,7 @@ void delete_at_end(ListNode **head) {
   free(traveler);
 }
 
-void delete_at_position(ListNode **head, const int position) {
+void delete_at_position(list_node_t **head, const int position) {
   if (*head == NULL) {
     return;
   }
@@ -121,8 +122,8 @@ void delete_at_position(ListNode **head, const int position) {
   }
 
   int k = 0;
-  ListNode *traveler = *head;
-  ListNode *prev = NULL;
+  list_node_t *traveler = *head;
+  list_node_t *prev = NULL;
 
   while (traveler != NULL && k < position - 1) {
     prev = traveler;
@@ -138,12 +139,12 @@ void delete_at_position(ListNode **head, const int position) {
   free(traveler);
 }
 
-ListNode *search(ListNode *head, const int key) {
+list_node_t *search(list_node_t *head, const int key) {
   if (head == NULL) {
     return NULL;
   }
 
-  ListNode *traveler = head;
+  list_node_t *traveler = head;
   while (traveler != NULL) {
     if (traveler->data == key) {
       return traveler;
@@ -153,18 +154,18 @@ ListNode *search(ListNode *head, const int key) {
   return NULL;
 }
 
-void update(ListNode *head, const int old_val, const int new_val) {
+void update(list_node_t *head, const int old_val, const int new_val) {
   if (head == NULL) {
     return;
   }
-  ListNode *node = search(head, old_val);
+  list_node_t *node = search(head, old_val);
   if (node == NULL) {
     return;
   }
   node->data = new_val;
 }
 
-void print_list(const ListNode *head) {
+void print_list(const list_node_t *head) {
   while (head != NULL) {
     printf("%d -> ", head->data);
     head = head->next;
@@ -172,7 +173,7 @@ void print_list(const ListNode *head) {
   printf("\n");
 }
 
-int get_len(const ListNode *head) {
+int get_len(const list_node_t *head) {
   int result = 0;
   while (head != NULL) {
     result++;

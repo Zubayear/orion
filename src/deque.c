@@ -1,8 +1,8 @@
 #include "../include/deque.h"
 #include <stdlib.h>
 
-Deque *create_deque() {
-  Deque *deque = malloc(sizeof(Deque));
+deque_t *create_deque() {
+  deque_t *deque = malloc(sizeof(deque_t));
   if (!deque) {
     return NULL;
   }
@@ -11,12 +11,12 @@ Deque *create_deque() {
   return deque;
 }
 
-int is_empty(Deque *deque) { return deque->size == 0; }
+int is_empty(deque_t *deque) { return deque->size == 0; }
 
-int get_size(Deque *deque) { return deque->size; }
+int get_size(deque_t *deque) { return deque->size; }
 
-void push_front(Deque *deque, void *data) {
-  DequeNode *node = malloc(sizeof(DequeNode));
+void push_front(deque_t *deque, void *data) {
+  deque_node_t *node = malloc(sizeof(deque_node_t));
   if (node == NULL) {
     return;
   }
@@ -35,8 +35,8 @@ void push_front(Deque *deque, void *data) {
   deque->size++;
 }
 
-void push_back(Deque *deque, void *data) {
-  DequeNode *node = malloc(sizeof(DequeNode));
+void push_back(deque_t *deque, void *data) {
+  deque_node_t *node = malloc(sizeof(deque_node_t));
   if (node == NULL) {
     return;
   }
@@ -54,11 +54,11 @@ void push_back(Deque *deque, void *data) {
   deque->size++;
 }
 
-void *pop_front(Deque *deque) {
+void *pop_front(deque_t *deque) {
   if (deque == NULL || deque->front == NULL) {
     return 0;
   }
-  DequeNode *temp = deque->front;
+  deque_node_t *temp = deque->front;
   void *data = temp->data;
   deque->front = deque->front->next;
 
@@ -72,11 +72,11 @@ void *pop_front(Deque *deque) {
   return data;
 }
 
-void *pop_back(Deque *deque) {
+void *pop_back(deque_t *deque) {
   if (deque == NULL || deque->rear == NULL) {
     return 0;
   }
-  DequeNode *temp = deque->rear;
+  deque_node_t *temp = deque->rear;
   deque->rear = deque->rear->prev;
 
   void *data = temp->data;
@@ -90,21 +90,21 @@ void *pop_back(Deque *deque) {
   return data;
 }
 
-DequeNode *front(Deque *deque) {
+deque_node_t *front(deque_t *deque) {
   if (deque == NULL) {
     return NULL;
   }
   return deque->front;
 }
 
-DequeNode *back(Deque *deque) {
+deque_node_t *back(deque_t *deque) {
   if (deque == NULL) {
     return NULL;
   }
   return deque->rear;
 }
 
-void clear_deque(Deque *deque) {
+void clear_deque(deque_t *deque) {
   if (deque == NULL) {
     return;
   }
@@ -113,7 +113,7 @@ void clear_deque(Deque *deque) {
   }
 }
 
-void destroy_deque(Deque *deque) {
+void destroy_deque(deque_t *deque) {
   if (deque == NULL) {
     return;
   }

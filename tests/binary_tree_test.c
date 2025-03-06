@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 void test_insert() {
-  TreeNode *root = NULL;
+  tree_node_t *root = NULL;
 
   root = insert_node(root, 10);
   root = insert_node(root, 5);
@@ -18,7 +18,7 @@ void test_insert() {
 }
 
 void test_traversal() {
-  TreeNode *root = NULL;
+  tree_node_t *root = NULL;
   root = insert_node(root, 10);
   root = insert_node(root, 5);
   root = insert_node(root, 15);
@@ -30,7 +30,7 @@ void test_traversal() {
 
 void test_bfs() {
 
-  TreeNode *root = NULL;
+  tree_node_t *root = NULL;
   root = insert_node(root, 10);
   root = insert_node(root, 5);
   root = insert_node(root, 15);

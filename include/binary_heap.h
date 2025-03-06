@@ -5,16 +5,16 @@ typedef struct BinaryHeap {
   int *arr;
   int size;
   int capacity;
-} BinaryHeap;
+} binary_heap_t;
 
-BinaryHeap *create_heap(const int capacity);
-void push(BinaryHeap *heap, int value);
-void heapify_up(BinaryHeap *heap, int index);
-void heapify_down(BinaryHeap *heap, int index);
-int pop(BinaryHeap *heap);
-int peek(BinaryHeap *heap);
-void destroy_heap(BinaryHeap *heap);
-void print_heap(BinaryHeap *heap);
-void heap_sort(BinaryHeap *heap);
+binary_heap_t *create_heap(const int capacity);
+void push(binary_heap_t *heap, int value);
+void heapify_up(binary_heap_t *heap, int index);
+void heapify_down(binary_heap_t *heap, int index);
+int pop(binary_heap_t *heap);
+int peek(binary_heap_t *heap);
+void destroy_heap(binary_heap_t *heap);
+void print_heap(binary_heap_t *heap);
+void heap_sort(binary_heap_t *heap);
 
 #endif // !BINARY_HEAP_H

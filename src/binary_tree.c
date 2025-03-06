@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-TreeNode *create_new_node(const int data) {
-  TreeNode *new_node = malloc(sizeof(TreeNode));
+tree_node_t *create_new_node(const int data) {
+  tree_node_t *new_node = malloc(sizeof(tree_node_t));
   if (new_node == NULL) {
     return NULL;
   }
@@ -14,17 +14,17 @@ TreeNode *create_new_node(const int data) {
   return new_node;
 }
 
-TreeNode *insert_node(TreeNode *root, const int data) {
-  TreeNode *node = create_new_node(data);
+tree_node_t *insert_node(tree_node_t *root, const int data) {
+  tree_node_t *node = create_new_node(data);
   if (root == NULL) {
     return node;
   }
 
-  Deque *queue = create_deque();
+  deque_t *queue = create_deque();
   push_front(queue, root);
 
   while (!is_empty(queue)) {
-    TreeNode *current = pop_back(queue);
+    tree_node_t *current = pop_back(queue);
     if (current->left == NULL) {
       current->left = node;
       break;
@@ -44,7 +44,7 @@ TreeNode *insert_node(TreeNode *root, const int data) {
   return root;
 }
 
-void inorder_traversal(const TreeNode *root) {
+void inorder_traversal(const tree_node_t *root) {
   if (root == NULL) {
     return;
   }
@@ -53,7 +53,7 @@ void inorder_traversal(const TreeNode *root) {
   inorder_traversal(root->right);
 }
 
-void free_tree(TreeNode *root) {
+void free_tree(tree_node_t *root) {
   if (root == NULL) {
     return;
   }
@@ -62,16 +62,16 @@ void free_tree(TreeNode *root) {
   free(root);
 }
 
-void bfs(TreeNode *root) {
+void bfs(tree_node_t *root) {
   if (root == NULL) {
     return;
   }
 
-  Deque *queue = create_deque();
+  deque_t *queue = create_deque();
   push_front(queue, root);
 
   while (!is_empty(queue)) {
-    TreeNode *node = (TreeNode *)pop_back(queue);
+    tree_node_t *node = (tree_node_t *)pop_back(queue);
     printf("%d ", node->data);
     if (node->left != NULL) {
       push_front(queue, node->left);
